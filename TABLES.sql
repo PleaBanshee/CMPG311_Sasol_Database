@@ -84,7 +84,7 @@ CREATE TABLE Qualification (
     Qual_ID NUMBER(10) REFERENCES Qualification_Detail(Qual_ID),
     Emp_ID NUMBER(10) REFERENCES Employee(Emp_ID),
     Qualification_Num VARCHAR(10) UNIQUE NOT NULL,
-    CONSTRAINT CHECK_QUALNUM CHECK (Qualification_Num = 10),
+    CONSTRAINT CHECK_QUALNUM CHECK (LENGTH(Qualification_Num) = 10),
     CONSTRAINT PK_QUALIFICATION PRIMARY KEY (Qual_ID,Emp_ID)
 );
 

@@ -9,7 +9,7 @@ CREATE TABLE Shift (
     Shift_Description VARCHAR(50) NOT NULL,
     Shift_Start DATE NOT NULL,
     Shift_End DATE NOT NULL,
-    CONSTRAINT VALID_SHIFTS CHECK (Shift_End > Shift_Start)
+    ADD CONSTRAINT VALID_SHIFTS CHECK (Shift_End > Shift_Start)
 );
 
 CREATE TABLE Mine (

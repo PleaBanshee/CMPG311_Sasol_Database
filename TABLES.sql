@@ -18,7 +18,7 @@ CREATE TABLE Mine (
     Mine_ID NUMBER(10) CONSTRAINT PK_MINE PRIMARY KEY, 
     Mine_Name VARCHAR(50) NOT NULL,
     Location VARCHAR(120) NOT NULL, 
-    Contact_Num VARCHAR(12)  UNIQUE NOT NULL,
+    Contact_Num VARCHAR(12)  NOT NULL,
     Coal_Quantity BINARY_FLOAT NOT NULL,
     CONSTRAINT UNIQUE_MINE_NAME UNIQUE(Mine_Name),
     CONSTRAINT UNIQUE_MINE_CONT_NUM UNIQUE(Contact_Num),
@@ -64,7 +64,7 @@ CREATE TABLE Export (
     Export_ID NUMBER(10) CONSTRAINT PK_EXPORT PRIMARY KEY, 
     Quantity BINARY_FLOAT NOT NULL,    
     Transporter VARCHAR(50) NOT NULL,  
-    Transport_Stat CHAR(1) NOT NULL,
+    Transporter_Stat CHAR(1) NOT NULL,
     Ship_Date DATE NOT NULL,    
     Arrival_Date DATE NOT NULL, 
     Sales_Price BINARY_FLOAT NOT NULL,
@@ -89,7 +89,7 @@ CREATE TABLE Manager (
 CREATE TABLE Qualification (
     Qual_ID NUMBER(10) REFERENCES Qualification_Detail(Qual_ID),
     Emp_ID NUMBER(10) REFERENCES Employee(Emp_ID),
-    Qualification_Num VARCHAR(10) UNIQUE NOT NULL,
+    Qualification_Num VARCHAR(10) NOT NULL,
     CONSTRAINT UNIQUE_QUAL_NUM UNIQUE(Qualification_Num),
     CONSTRAINT CHECK_QUALNUM CHECK (LENGTH(Qualification_Num) = 10),
     CONSTRAINT PK_QUALIFICATION PRIMARY KEY (Qual_ID,Emp_ID)

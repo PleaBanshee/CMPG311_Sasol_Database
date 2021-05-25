@@ -2,7 +2,7 @@ INSERT ALL
 INTO DEPARTMENT VALUES (1, 'Operations', '+27598613436')
 INTO DEPARTMENT VALUES (2, 'Executive', '+27999930412')
 INTO DEPARTMENT VALUES (3, 'Human Resources', '+27948304134')
-INTO DEPARTMENT VALUES (4, 'Facilities', '+27329537321')
+INTO DEPARTMENT VALUES (4, 'Mining Divisions', '+27329537321')
 SELECT * FROM DUAL;
 
 INSERT ALL
@@ -38,7 +38,7 @@ INTO QUALIFICATION_DETAIL VALUES (5, 'Mining services; Processes and Layouts','S
 INTO QUALIFICATION_DETAIL VALUES (6, 'Mining operations for underground Hard rock','National Certificate')
 INTO QUALIFICATION_DETAIL VALUES (7, 'Destroy old explosives','Blasting')
 INTO QUALIFICATION_DETAIL VALUES (8, 'Labour Supervision','Supervisory')
-INTO QUALIFICATION_DETAIL VALUES (9, 'Test for flammable gas','Health & Safety')
+INTO QUALIFICATION_DETAIL VALUES (9, 'Test for flammable gas','Health and Safety')
 INTO QUALIFICATION_DETAIL VALUES (10, 'Blast a misred hole','Blasting')
 INTO QUALIFICATION_DETAIL VALUES (11, 'Underground Hard Rock','National Certificate in Mining operations')
 INTO QUALIFICATION_DETAIL VALUES (12, 'Underground Hard Rock','National Certificate in Mining operations')
@@ -49,7 +49,7 @@ INTO QUALIFICATION_DETAIL VALUES (16, 'Mineral Processing','FET Certificate')
 INTO QUALIFICATION_DETAIL VALUES (17, 'Mineral Processing','FET Certificate')
 INTO QUALIFICATION_DETAIL VALUES (18, 'Crushing','Skills Programmes')
 INTO QUALIFICATION_DETAIL VALUES (19, 'Ore Reception','Skills Programmes')
-INTO QUALIFICATION_DETAIL VALUES (20, 'Test for flammable gas','Health & Safety')
+INTO QUALIFICATION_DETAIL VALUES (20, 'Test for flammable gas','Health and Safety')
 SELECT * FROM DUAL;
 
 INSERT ALL

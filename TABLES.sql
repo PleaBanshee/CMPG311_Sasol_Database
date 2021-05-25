@@ -1,7 +1,8 @@
 CREATE TABLE Department (
     Dep_ID NUMBER(10) CONSTRAINT PK_DEPARTMENT PRIMARY KEY,
     Dep_Name VARCHAR(50) NOT NULL,
-    Dep_ContactNumber VARCHAR(12) UNIQUE NOT NULL,
+    Dep_ContactNumber VARCHAR(12) NOT NULL,
+    CONSTRAINT UNIQUE_DEP_CONT_NUM UNIQUE(Dep_ContactNumber),
     CONSTRAINT CHECK_PHONE CHECK (LENGTH(Dep_ContactNumber) = 12 AND Dep_ContactNumber LIKE '+27%') 
 );
 
@@ -15,10 +16,12 @@ CREATE TABLE Shift (
 
 CREATE TABLE Mine (
     Mine_ID NUMBER(10) CONSTRAINT PK_MINE PRIMARY KEY, 
-    Mine_Name VARCHAR(50) UNIQUE NOT NULL,
+    Mine_Name VARCHAR(50) NOT NULL,
     Location VARCHAR(120) NOT NULL, 
     Contact_Num VARCHAR(12)  UNIQUE NOT NULL,
     Coal_Quantity BINARY_FLOAT NOT NULL,
+    CONSTRAINT UNIQUE_MINE_NAME UNIQUE(Mine_Name),
+    CONSTRAINT UNIQUE_MINE_CONT_NUM UNIQUE(Contact_Num),
     CONSTRAINT CHECK_MINENUM CHECK (LENGTH(Contact_Num) = 12 AND Contact_Num LIKE '+27%'),
     CONSTRAINT CHECK_QUANTITY CHECK (Coal_Quantity >= 0) 
 );
@@ -43,10 +46,12 @@ CREATE TABLE Employee (
     Salary BINARY_FLOAT NOT NULL,      
     Emp_FirstName VARCHAR(50) NOT NULL,   
     Emp_LastName VARCHAR(50) NOT NULL,      
-    Emp_ContactNumber VARCHAR(12) UNIQUE NOT NULL,
+    Emp_ContactNumber VARCHAR(12) NOT NULL,
     Emp_Address VARCHAR(100) NOT NULL,     
-    Emp_Email  VARCHAR(100) UNIQUE NOT NULL,      
+    Emp_Email  VARCHAR(100) NOT NULL,      
     Job_Description VARCHAR(50) NOT NULL,
+    CONSTRAINT UNIQUE_EMP_CONT_NUM UNIQUE(Emp_ContactNumber),
+    CONSTRAINT UNIQUE_EMP_EMAIL UNIQUE(Emp_Email),
     CONSTRAINT CHECK_SAL CHECK (Salary >= 15000),
     CONSTRAINT CHECK_PHONENUM CHECK (LENGTH(Emp_ContactNumber) = 12 AND Emp_ContactNumber LIKE '+27%'),
     CONSTRAINT CHECK_EMAIL CHECK (Emp_Email LIKE '%@gmail%' OR Emp_Email LIKE '%@hotmail%'  AND Emp_Email LIKE '%.com'),
@@ -59,7 +64,7 @@ CREATE TABLE Export (
     Export_ID NUMBER(10) CONSTRAINT PK_EXPORT PRIMARY KEY, 
     Quantity BINARY_FLOAT NOT NULL,    
     Transporter VARCHAR(50) NOT NULL,  
-    Transporter_Stat CHAR(1) NOT NULL,
+    Transport_Stat CHAR(1) NOT NULL,
     Ship_Date DATE NOT NULL,    
     Arrival_Date DATE NOT NULL, 
     Sales_Price BINARY_FLOAT NOT NULL,
@@ -77,6 +82,7 @@ CREATE TABLE Export (
 CREATE TABLE Manager (
     Manager_ID NUMBER(10) CONSTRAINT PK_MANAGER PRIMARY KEY, 
     Emp_ID NUMBER(10) NOT NULL,
+    CONSTRAINT UNIQUE_EMP_ID UNIQUE(Emp_ID),
     CONSTRAINT FK_MANAGER FOREIGN KEY (Emp_ID) REFERENCES Employee(Emp_ID)
 );
 
@@ -84,6 +90,7 @@ CREATE TABLE Qualification (
     Qual_ID NUMBER(10) REFERENCES Qualification_Detail(Qual_ID),
     Emp_ID NUMBER(10) REFERENCES Employee(Emp_ID),
     Qualification_Num VARCHAR(10) UNIQUE NOT NULL,
+    CONSTRAINT UNIQUE_QUAL_NUM UNIQUE(Qualification_Num),
     CONSTRAINT CHECK_QUALNUM CHECK (LENGTH(Qualification_Num) = 10),
     CONSTRAINT PK_QUALIFICATION PRIMARY KEY (Qual_ID,Emp_ID)
 );

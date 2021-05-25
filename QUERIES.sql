@@ -3,10 +3,10 @@ SELECT DEP_ID AS ID, DEP_NAME AS DEPNAME, DEP_CONTACTNUMBER AS DEPNUM
 FROM DEPARTMENT 
 ORDER BY DEP_NAME;
 
-SELECT E.Emp_LastName AS “Last Name”, E.Emp_FirstName AS “First Name”, S.Amount, S.Sal_Date AS “Salary Date”
+SELECT E.Emp_LastName AS "Last Name", E.Emp_FirstName AS "First Name", S.Amount, S.Sal_Date AS "Salary Date"
 FROM EMPLOYEE E JOIN SALARY_HISTORY S
 USING (Emp_ID)
-WHERE S.Sal_Date BETWEEN "01-JAN-2018" AND "01-OCT-2019"
+WHERE S.Sal_Date BETWEEN TO_DATE('01-JAN-2018', 'DD-MON-YYYY') AND TO_DATE('01-OCT-2019', 'DD-MON-YYYY')
 ORDER BY Sal_Date;
 
 -- Sorting
@@ -22,7 +22,7 @@ ORDER BY EMP_FIRSTNAME ASC;
 SELECT E.Emp_FirstName, E.Emp_LastName, E.Emp_ContactNumber, E.Emp_Address, E.Emp_Email, E.Job_Description
 FROM EMPLOYEE E, MANAGER MG
 WHERE E.Mine_ID = 3 AND E.Emp_ID = MG.Emp_ID
-ORDER BY E.Emp_LastNamee ASC;
+ORDER BY E.Emp_LastName ASC;
 
 SELECT E.Emp_FirstName, E.Emp_LastName, QD.Name
 FROM EMPLOYEE E, Qualification_Detail QD, Qualification Q
@@ -32,6 +32,10 @@ ORDER BY E.Emp_LastName ASC;
 SELECT E.Export_ID, M.Mine_Name AS Mine, D.Dest_Name AS Destination, E.Quantity
 FROM EXPORT E, MINE M, DESTINATION D 
 WHERE D.Dest_Name LIKE ‘Secunda’ OR D.Dest_Name LIKE ‘Sasolburg’ AND E.Mine_ID LIKE M.Mine_ID;
+
+SELECT E.Export_ID, M.Mine_Name, D.Dest_Name AS Destination, E.Quantity
+FROM EXPORT E, MINE M, DESTINATION D 
+WHERE (E.Dest_ID = 1 OR E.Dest_ID = 2) AND (D.Dest_ID = 1 OR D.Dest_ID = 2) AND (D.Dest_ID LIKE E.Dest_ID) AND (E.Mine_ID LIKE M.Mine_ID) ;
 
 -- ROUND and/or TRUNC
 SELECT ROUND(AVG(Salary),0) AS “Average Salary”

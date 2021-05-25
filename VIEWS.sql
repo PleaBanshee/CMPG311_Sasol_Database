@@ -243,12 +243,6 @@ AS SELECT QD.Name AS Qualification, COUNT(Q.Qual_ID) AS Qualified_Employees
    WHERE Q.Qual_ID LIKE QD.Qual_ID
    GROUP BY QD.Name;
 
-CREATE VIEW EMP_QUAL_STATS
-AS SELECT QD.Name AS Qualification, COUNT(Q.Qual_ID) AS Qualified_Employees
-   FROM QUALIFICATION_DETAIL QD, QUALIFICATION Q
-   WHERE Q.Qual_ID LIKE QD.Qual_ID
-   GROUP BY QD.Name;
-
 -- Salary_History Views
 CREATE VIEW AllSalaries
 AS SELECT E.Emp_LastName AS “Last Name”, E.Emp_FirstName AS “First Name”, S.Amount, S.Sal_Date AS “Salary Date”

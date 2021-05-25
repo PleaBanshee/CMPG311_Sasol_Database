@@ -245,7 +245,7 @@ AS SELECT QD.Name AS Qualification, COUNT(Q.Qual_ID) AS Qualified_Employees
 
 -- Salary_History Views
 CREATE VIEW AllSalaries
-AS SELECT E.Emp_LastName AS “Last Name”, E.Emp_FirstName AS “First Name”, S.Amount, S.Sal_Date AS “Salary Date”
+AS SELECT E.Emp_LastName AS "Last Name", E.Emp_FirstName AS "First Name", S.Amount, S.Sal_Date AS "Salary Date"
    FROM EMPLOYEE E JOIN SALARY_HISTORY S
    USING (Emp_ID)
    ORDER BY Emp_ID;

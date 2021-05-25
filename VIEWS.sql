@@ -62,34 +62,34 @@ AS SELECT *
    FROM MINE
    WHERE Mine_Name LIKE '%Bojespruit%';
 
--- Look up each specific Mine's Export: (Collective and Individual)
+-- Look up each specific Mine's Export:
 CREATE VIEW MineExport
-AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transport_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
+AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transporter_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
    FROM MINE M NATURAL JOIN EXPORT E NATURAL JOIN DESTINATION D
    ORDER BY M.Mine_Name ASC;
 
 CREATE VIEW MooikraalExport
-AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transport_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
+AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transporter_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
    FROM MINE M NATURAL JOIN EXPORT E NATURAL JOIN DESTINATION D
    WHERE M.Mine_Name LIKE '%Mooikraal%';
 
 CREATE VIEW TwisdraaiExport
-AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transport_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
+AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transporter_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
    FROM MINE M NATURAL JOIN EXPORT E NATURAL JOIN DESTINATION D
    WHERE M.Mine_Name LIKE '%Twisdraai%';  
 
 CREATE VIEW BrandspruitExport
-AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transport_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
+AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transporter_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
    FROM MINE M NATURAL JOIN EXPORT E NATURAL JOIN DESTINATION D
    WHERE M.Mine_Name LIKE '%Brandspruit%';
 
 CREATE VIEW CollieryExport
-AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transport_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
+AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transporter_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
    FROM MINE M NATURAL JOIN EXPORT E NATURAL JOIN DESTINATION D
    WHERE M.Mine_Name LIKE '%Colliery%';
 
 CREATE VIEW BojespruitExport
-AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transport_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
+AS SELECT M.Mine_Name AS Mine, E.Export_ID, E.Quantity, E.Transporter, E.Transporter_Stat AS Status, E.Ship_Date AS Shipping_Date, E.Arrival_Date, E.Sales_Price, E.Export_Cost, D.Dest_Name AS Destination
    FROM MINE M NATURAL JOIN EXPORT E NATURAL JOIN DESTINATION D
    WHERE M.Mine_Name LIKE '%Bojespruit%';
 
@@ -124,32 +124,32 @@ AS SELECT M.Manager_ID, E.Emp_FirstName AS Name, E.Emp_LastName AS Surname, E.Em
 -- Which managers work at which Mine:
 CREATE VIEW MooikraalManagers
 AS SELECT M.Manager_ID, E.Emp_FirstName AS Name, E.Emp_LastName AS Surname, E.Emp_ContactNumber AS Contact_Number, E.Emp_Address AS Address, E.Emp_Email AS Email, E.Job_Description 
-   FROM EMPLOYEE E, MANAGER MG
-   WHERE E.Mine_ID = '1' AND E.Emp_ID = MG.Emp_ID
+   FROM EMPLOYEE E, MANAGER M
+   WHERE E.Mine_ID = '1' AND E.Emp_ID = M.Emp_ID
    ORDER BY E.Emp_LastName ASC;
 
 CREATE VIEW TwisdraaiManagers
 AS SELECT M.Manager_ID, E.Emp_FirstName AS Name, E.Emp_LastName AS Surname, E.Emp_ContactNumber AS Contact_Number, E.Emp_Address AS Address, E.Emp_Email AS Email, E.Job_Description 
-   FROM EMPLOYEE E, MANAGER MG
-   WHERE E.Mine_ID = '2' AND E.Emp_ID = MG.Emp_ID
+   FROM EMPLOYEE E, MANAGER M
+   WHERE E.Mine_ID = '2' AND E.Emp_ID = M.Emp_ID
    ORDER BY E.Emp_LastName ASC;
 
 CREATE VIEW BrandspruitManagers
 AS SELECT M.Manager_ID, E.Emp_FirstName AS Name, E.Emp_LastName AS Surname, E.Emp_ContactNumber AS Contact_Number, E.Emp_Address AS Address, E.Emp_Email AS Email, E.Job_Description 
-   FROM EMPLOYEE E, MANAGER MG
-   WHERE E.Mine_ID = '3' AND E.Emp_ID = MG.Emp_ID
+   FROM EMPLOYEE E, MANAGER M
+   WHERE E.Mine_ID = '3' AND E.Emp_ID = M.Emp_ID
    ORDER BY E.Emp_LastName ASC;
 
 CREATE VIEW CollieryManagers
 AS SELECT M.Manager_ID, E.Emp_FirstName AS Name, E.Emp_LastName AS Surname, E.Emp_ContactNumber AS Contact_Number, E.Emp_Address AS Address, E.Emp_Email AS Email, E.Job_Description 
-   FROM EMPLOYEE E, MANAGER MG
-   WHERE E.Mine_ID = '4' AND E.Emp_ID = MG.Emp_ID
+   FROM EMPLOYEE E, MANAGER M
+   WHERE E.Mine_ID = '4' AND E.Emp_ID = M.Emp_ID
    ORDER BY E.Emp_LastName ASC;
 
 CREATE VIEW BojespruitManagers
 AS SELECT M.Manager_ID, E.Emp_FirstName AS Name, E.Emp_LastName AS Surname, E.Emp_ContactNumber AS Contact_Number, E.Emp_Address AS Address, E.Emp_Email AS Email, E.Job_Description 
-   FROM EMPLOYEE E, MANAGER MG
-   WHERE E.Mine_ID = '5' AND E.Emp_ID = MG.Emp_ID
+   FROM EMPLOYEE E, MANAGER M
+   WHERE E.Mine_ID = '5' AND E.Emp_ID = M.Emp_ID
    ORDER BY E.Emp_LastName ASC;
 
 -- Desitnation View
@@ -186,12 +186,12 @@ AS SELECT Transporter, Transporter_Stat AS Status
    FROM Export;
 
 CREATE VIEW Export_Profits
-AS SELECT Sales_Price AS Revenue, Export_Cost AS Export Cost, (Sales_Price - Export_Cost) AS Profit
+AS SELECT Sales_Price AS Revenue, Export_Cost, (Sales_Price - Export_Cost) AS Profit
    FROM Export
    WHERE Sales_Price > Export_Cost;
    
 CREATE VIEW Export_Losses
-AS SELECT Sales_Price AS Revenue, Export_Cost AS Export Cost, (Sales_Price - Export_Cost) AS Loss
+AS SELECT Sales_Price AS Revenue, Export_Cost, (Sales_Price - Export_Cost) AS Loss
    FROM Export
    WHERE Sales_Price < Export_Cost;
 
@@ -209,11 +209,9 @@ AS SELECT SUM(Sales_Price) AS "Total Revenue"
 
 CREATE VIEW Export_Destinations
 AS SELECT Transporter, Dest_Name AS Destination
-   FROM Export, Destination
-   INNER JOIN Dest_ID ON
-        Destination.Dest_ID = Export.Dest_ID
-    ORDER BY 
-        Transporter ASC;
+   FROM Export INNER JOIN Destination
+   ON Destination.Dest_ID = Export.Dest_ID
+   ORDER BY Transporter ASC;
 
 CREATE VIEW Transporter_Loads
 AS SELECT Transporter, Quantity AS "Quantity in Tons"
@@ -227,7 +225,7 @@ AS SELECT Transporter, Ship_Date AS "Shipping Date", Arrival_Date AS "Arrival Da
 
 
 CREATE VIEW Shippings_Per_Period
-AS SELECT (Transporter,Quantity, Ship_Date AS "Shipping Date", Arrival_Date AS "Arrival Date", ( SELECT COUNT(Ship_Date) FROM EXPORT) AS "Total Shippings"
+AS SELECT Transporter,Quantity, Ship_Date AS "Shipping Date", Arrival_Date AS "Arrival Date", ( SELECT COUNT(Ship_Date) FROM EXPORT) AS "Total Shippings"
    FROM Export
    WHERE Ship_Date BETWEEN TO_DATE('2021/06/01','YYYY/MM/DD') AND TO_DATE('2021/06/30','YYYY/MM/DD')
    ORDER BY Ship_Date ASC;
@@ -271,20 +269,20 @@ AS SELECT COUNT(DISTINCT Sal_Date)
    WHERE Amount > 30000;
 
 CREATE VIEW SalariesByDate
-AS SELECT E.Emp_LastName AS “Last Name”, E.Emp_FirstName AS “First Name”, S.Amount, S.Sal_Date AS “Salary Date”
+AS SELECT E.Emp_LastName AS "Last Name", E.Emp_FirstName AS "First Name", S.Amount, S.Sal_Date AS "Salary Date"
    FROM EMPLOYEE E JOIN SALARY_HISTORY S
    USING (Emp_ID)
-   ORDER BY Sal_Date ASC;
+   ORDER BY Sal_Date DESC;
 
 CREATE VIEW SalHistBetweenDates
-AS SELECT E.Emp_LastName AS “Last Name”, E.Emp_FirstName AS “First Name”, S.Amount, S.Sal_Date AS “Salary Date”
+AS SELECT E.Emp_LastName AS "Last Name", E.Emp_FirstName AS "First Name", S.Amount, S.Sal_Date AS "Salary Date"
    FROM EMPLOYEE E JOIN SALARY_HISTORY S
    USING (Emp_ID)
-   WHERE S.Sal_Date BETWEEN "01-JAN-2018" AND "01-OCT-2019"
-   ORDER BY Sal_Date;
+   WHERE S.Sal_Date BETWEEN '01-JAN-2018' AND '01-JAN-2019'
+   ORDER BY S.Sal_Date;
 
 CREATE VIEW SalHistByEmployee
-AS SELECT E.Emp_LastName AS “Last Name”, E.Emp_FirstName AS “First Name”, S.Amount, S.Sal_Date AS “Salary Date”
+AS SELECT E.Emp_LastName AS "Last Name", E.Emp_FirstName AS "First Name", S.Amount, S.Sal_Date AS "Salary Date"
    FROM EMPLOYEE E JOIN SALARY_HISTORY S
    USING (Emp_ID)
    ORDER BY Emp_LastName;

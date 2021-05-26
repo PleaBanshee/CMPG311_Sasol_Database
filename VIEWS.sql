@@ -227,7 +227,7 @@ AS SELECT Transporter, Ship_Date AS "Shipping Date", Arrival_Date AS "Arrival Da
 CREATE VIEW Shippings_Per_Period
 AS SELECT Transporter,Quantity, Ship_Date AS "Shipping Date", Arrival_Date AS "Arrival Date", ( SELECT COUNT(Ship_Date) FROM EXPORT) AS "Total Shippings"
    FROM Export
-   WHERE Ship_Date BETWEEN TO_DATE('2021/06/01','YYYY/MM/DD') AND TO_DATE('2021/06/30','YYYY/MM/DD')
+   WHERE Ship_Date BETWEEN TO_DATE('2021/05/01','YYYY/MM/DD') AND TO_DATE('2021/05/30','YYYY/MM/DD')
    ORDER BY Ship_Date ASC;
 
 CREATE VIEW MINE_AVG_EXPORT
@@ -241,8 +241,6 @@ AS SELECT M.Mine_Name AS Mine, SUM(E.Quantity) AS Quantity
    FROM MINE M, EXPORT E 
    WHERE E.Mine_ID LIKE M.Mine_ID 
    GROUP BY M.Mine_Name;
-
-
 
 --Qualification Views
 CREATE VIEW EMPLOYEE_QUAL

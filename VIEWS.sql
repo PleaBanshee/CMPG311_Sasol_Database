@@ -263,7 +263,7 @@ AS SELECT E.Emp_LastName AS "Last Name", E.Emp_FirstName AS "First Name", S.Amou
    ORDER BY Emp_ID;
 
 CREATE VIEW OneEmployee
-AS SELECT E.Emp_LastName AS “Last Name”, E.Emp_FirstName AS “First Name”, S.Amount, S.Sal_Date AS “Salary Date”
+AS SELECT E.Emp_LastName AS "Last Name", E.Emp_FirstName AS "First Name", S.Amount, S.Sal_Date AS "Salary Date"
    FROM EMPLOYEE E JOIN SALARY_HISTORY S
    USING (Emp_ID)
    WHERE Emp_ID = 1

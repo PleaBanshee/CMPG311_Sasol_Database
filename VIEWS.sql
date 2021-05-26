@@ -10,7 +10,7 @@ AS SELECT *
    FROM SHIFT;
 
 CREATE VIEW ShiftHours
-AS SELECT SHIFT_END - SHIFT_START AS Shift_Hours
+AS SELECT ROUND((SHIFT_END - SHIFT_START)*24,2) AS "Shift_Hours"
    FROM SHIFT;
 
 -- All mines on the system A-Z:

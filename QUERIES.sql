@@ -46,6 +46,10 @@ SELECT
     REGEXP_SUBSTR(Emp_Address, '[^ ]+$') AS "Address Part 5"
 FROM EMPLOYEE;
 
+SELECT CONCAT(CONCAT(Emp_FirstName,' '),Emp_LastName) AS "Employee on Shift",ROUND((SHIFT_END - SHIFT_START)*24,2) AS "Shift Hours"
+FROM SHIFT
+INNER JOIN Employee ON Employee.Shift_ID = SHIFT.Shift_ID;
+
 -- ROUND and/or TRUNC
 SELECT ROUND(AVG(Salary),0) AS "Average Salary"
 FROM EMPLOYEE;
